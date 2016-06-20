@@ -1,0 +1,120 @@
+
+@import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
+@import url(https://necolas.github.io/normalize.css/4.1.1/normalize.css);
+body{
+  background-color: white;
+}
+
+h1{
+  display: block;
+  position:static;
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+  font-size: 2em;
+  font-family: 'Permanent Marker', cursive;
+  font-style: normal;
+}
+
+
+
+/***********************************
+          Button Styling
+***********************************/
+
+#newQuote{
+  display:block;
+  font-size: 16px;
+  position: relative;
+  border: none;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background-color: #EE7271;
+  outline: none;
+  border-radius: 5px;
+  color: white;
+  transition: all .2s ease-out;
+  margin-top: 20px;
+}
+#newQuote:hover{
+  transition: all .2s ease-in;
+  background-color: #D95048;
+  border-bottom: 3px solid #B2423B;
+}
+
+/***********************************
+          Quote Styling
+***********************************/
+#quote{
+  position: relative;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/***********************************
+          Hat Styling
+***********************************/
+
+.bottom{
+  position:static;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 0;
+	height: 0;
+	border-top: 46px solid #D12C2A;
+	border-left: 200px solid transparent;
+  border-radius: 50px;
+
+}
+.top{
+  position: absolute;
+  border-right: 80px solid #EA322F;
+  border-left: 10px solid #EA322F;
+  border-top-right-radius: 80px;
+  border-top-left-radius: 80px;
+  border-bottom: 80px solid #EA322F;
+  position: relative;
+  width: 80px;
+  margin-left:auto;
+  margin-right: auto;
+  top: 2px;
+  z-index: -1;
+}
+
+.hat{
+  border-radius: 1px solid black;
+}
+
+/***********************************
+          Bill Pic Styling
+***********************************/
+
+.billpic{
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 920%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  object-fit: cover;
+  top: 60px;
+}
+
+
+
+#tweetBtn{
+  /*border: 1px solid red;*/
+  /*background-color: red;*/
+  cursor:auto;
+  position: relative;
+  width: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 290px;
+}

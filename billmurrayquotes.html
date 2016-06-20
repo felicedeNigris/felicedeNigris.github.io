@@ -1,0 +1,106 @@
+<!--//plan-->
+
+<!--/X/layout basic html structure-->
+<!--/X/layout basic jquery stuff i.e source and ready functions-->
+<!--/X/create title, and create a quotes "button"-->
+
+<!--/X/get a bunch bill murray quotes - put them an array-->
+<!--/X/use q tag for quotes-->
+<!--/X/make an event listener that will display the first quote in the array-->
+<!--//create a randomIndex function to select random quotes from the array-->
+<!--//use event listener and our randomIndex function to create a new quote text on click-->
+
+<!--//css stuff-->
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="./styling/billmurrayquotes.css">
+    <meta charset="utf-8">
+    <title>Bill Murray Quote Generator</title>
+  </head>
+
+  <body>
+
+    <h1> Bill Murray Quote Generator </h1>
+    <!-- Bill Murray Hat -->
+    <div class="hat">
+      <div class="hat top">
+
+      </div>
+      <div class="hat bottom">
+
+      </div>
+    </div>
+
+
+
+
+    <button id="newQuote">New Quote</button>
+    <br>
+    <div id="quote"></div>
+    <img class="billpic" src="https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fmedia-cache-ak0.pinimg.com%2Foriginals%2Ffc%2F92%2Fe3%2Ffc92e3a85a45c60276804d1999766a84.jpg&f=1">
+    <!-- SCRIPT BELOW HERE -->
+    <div id="tweetBtn">
+      <a href="https://twitter.com/share" data-text="" class="twitter-share-button" data-via="BillMurrayQuote">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </div>
+    <script>
+      $(document).ready(function(){
+
+
+        var quotes = [
+          "I've never made any horrible, horrible movies. If you don't ruin your reputation, you can always get work.",
+          "In Japan, you have no idea what they are saying, and they can't help you either. Nothing makes any sense. They're very polite, but you feel like a joke is being played on you the entire time you're there.",
+          "I'm a nut, but not just a nut.",
+          "Movie acting suits me because I only need to be good for 90 seconds at a time.",
+          "The first 45 minutes of the original Ghostbusters is some of the funniest stuff ever made.",
+          "One of the things I like about acting is that, in a funny way, I come back to myself.",
+          "The more relaxed you are, the better you are at everything: the better you are with your loved ones, the better you are with enemies, the better you are at your job, the better you are with yourself.",
+          "People say I'm difficult and sometimes that's a badge of honor.",
+          "Everyone loves Cinnabons.",
+          "I do absolutely nothing. I go home and stay there. I wash and scrub up each day, and that's it. One month I actually grew a moustache, just so I could say that I'd done something.",
+          "My favorite thing about New York is the people, because I think they're misunderstood. I don't think people realize how kind New York people are. The drivers are far more considerate, they're just very aggressive.",
+          "You gotta be able to play straight to play funny. If you can play straight to play funny, playing straight is not a big thing at all. Lots of so called funny people can be very good in a dramatic role."
+          ];
+          $('#quote').text(quotes[0]);
+
+        var lastNumber = 0;
+        var currentQuote = $('#quote').text();
+
+
+        $('#tweetBtn a').attr('data-text',currentQuote)
+        var getUniqueQuote = function(){
+        var randomIndex = Math.floor(Math.random() * quotes.length);
+        if (randomIndex != lastNumber){
+            var randomQuote = quotes[randomIndex];
+            $('#quote').text(randomQuote)
+            lastNumber = randomIndex;
+          } else {
+            getUniqueQuote();
+          }
+        } //end getUniqueQuote
+
+        $('#newQuote').click(function(ev){
+          getUniqueQuote();
+          ev.preventDefault();
+          // Remove existing iframe
+          $('#tweetBtn iframe').remove();
+          // Generate new markup
+          var tweetBtn = $('<a></a>')   //href="https://twitter.com/share" data-text="Bill Murray said" class="twitter-share-button" data-via="FeliDeNi"
+              .addClass('twitter-share-button')
+              .attr('href', 'https://twitter.com/share')
+              .attr('data-via', 'BillMurrayQuote')
+              .attr('data-text', $('#quote').text());
+          $('#tweetBtn').append(tweetBtn);
+          twttr.widgets.load();
+        });
+
+      }); //end doc on ready
+
+    </script>
+
+  </body>
+</html>
